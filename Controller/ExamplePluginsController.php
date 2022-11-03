@@ -37,7 +37,7 @@ class ExamplePluginsController extends AppController {
 				$requestData = [
 					'ExamplePlugin' => $this->request->data['ExamplePlugin'],
 				];
-				$encoded = ExamplePluginUtil::jsonEncode($requestData);
+				$encoded = $this->ExamplePluginModel->jsonEncode($requestData);
 				if (isset($encoded['exception'])) {
 					if (is_object($encoded['exception'])) {
 						$message = '保存できない文字列が含まれています。内容を修正してください。';
@@ -61,7 +61,7 @@ class ExamplePluginsController extends AppController {
 		} else {
 			$data = $this->SiteConfig->findByName('example_plugin');
 			if ($data) {
-				$decoded = ExamplePluginUtil::jsonDecode($data['SiteConfig']['value']);
+				$decoded = $this->ExamplePluginModel->jsonDecode($data['SiteConfig']['value']);
 				if (isset($decoded['exception'])) {
 					if (is_object($decoded['exception'])) {
 						$message = 'フォーム用の文字列に変換できない文字列が含まれています。内容を修正してください。';

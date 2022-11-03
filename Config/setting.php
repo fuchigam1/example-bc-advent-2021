@@ -2,7 +2,6 @@
 /**
  * [Config] 設定ファイル
  */
-App::uses('ExamplePluginUtil', 'ExamplePlugin.Lib');
 
 /**
  * 専用ログ
